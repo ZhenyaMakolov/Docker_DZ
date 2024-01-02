@@ -1,0 +1,184 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api/v1
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Помидор",
+  "description": "Лучшие помидоры на рынке"
+}
+
+###
+
+# получение продуктов
+GET {{baseUrl}}/products/
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH {{baseUrl}}/products/3/
+Content-Type: application/json
+
+{
+  "description": "Капуста новыый урожай"
+}
+
+###
+
+# удаление продукта
+DELETE {{baseUrl}}/products/1/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/products/?search=помидор
+Content-Type: application/json
+
+###
+
+# создание склада
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/1/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 100,
+      "price": 130.80
+    },
+    {
+      "product": 3,
+      "quantity": 243,
+      "price": 145
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?products=2
+Content-Type: application/json
+
+###
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Капуста",
+  "description": "Капуста ранняя"
+}
+
+###
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Огурец",
+  "description": "Огурцы короткоплодные"
+}
+
+###
+# создание склада
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "Бульвар Заречный, дом 5, корпус 3",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 300,
+      "price": 170.50
+    },
+    {
+      "product": 3,
+      "quantity": 200,
+      "price": 190.50
+    }
+  ]
+}
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/2/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 4,
+      "quantity": 350,
+      "price": 300.50
+    },
+    {
+      "product": 5,
+      "quantity": 90,
+      "price": 95.20
+    },
+    {
+      "product": 8,
+      "quantity": 80,
+      "price": 245.50
+    },
+    {
+      "product": 5,
+      "quantity": 150,
+      "price": 265.70
+    }
+  ]
+}
+###
+
+# получение складов
+GET {{baseUrl}}/stocks/
+Content-Type: application/json
+
+###
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?search=белый
+Content-Type: application/json
+
+###
+
+# получение продуктов (пагинация)
+GET {{baseUrl}}/products/?page=2
+Content-Type: application/json
+
+###
+
+# получение складов (пагинация)
+GET {{baseUrl}}/stocks/?page=2
+Content-Type: application/json
